@@ -354,7 +354,7 @@
     <!-- ============ ADMIN ============ -->
     <section id="admin">
       <h2><span class="num">6</span>Návod pro admina (moderace)</h2>
-      <p>Admin je učitel s příznakem <code>is_moderator</code>. Po každém přihlášení si vybere, který panel otevřít – <strong>učitelský</strong> (žáci, učebny, hodnocení) nebo <strong>Admin dashboard</strong>.</p>
+      <p>Admin je učitel s právy admina (<code>is_moderator</code>) nebo samostatný účet admina. Učitel-admin si po každém přihlášení vybere, který panel otevřít – <strong>učitelský</strong> (žáci, učebny, hodnocení) nebo <strong>Admin dashboard</strong>. Skoro všechno, co šlo dřív jen v Supabase dashboardu, jde teď udělat přímo tady.</p>
 
       <div class="grid">
         <div class="card feature">
@@ -363,20 +363,53 @@
           <p>Kdo co nahlásil, koho se to týká a proč. Admin hlášení vyřeší, smaže nahrávku nebo pozastaví účet.</p>
         </div>
         <div class="card feature">
-          <div class="ico">👤</div>
-          <h4>Uživatelé</h4>
-          <p>Všichni žáci a učitelé: schválit žáka, ověřit učitele, resetovat heslo, zabanovat / obnovit účet.</p>
-        </div>
-        <div class="card feature">
           <div class="ico">🎧</div>
           <h4>Nahrávky</h4>
           <p>Vyhledání žáka a přehled jeho nahrávek s možností smazání.</p>
         </div>
+        <div class="card feature">
+          <div class="ico">👤</div>
+          <h4>Uživatelé</h4>
+          <p>Všechny účty: schválit, ověřit, nové heslo, ban, role, práva admina, přejmenování, hvězdy, smazání.</p>
+        </div>
+        <div class="card feature">
+          <div class="ico">🏫</div>
+          <h4>Třídy</h4>
+          <p>Třídy všech učitelů: přesunout nebo přidat žáka, předat třídu jinému učiteli, smazat ji.</p>
+        </div>
+        <div class="card feature">
+          <div class="ico">📊</div>
+          <h4>Využití</h4>
+          <p>Kolik zabírá databáze a úložiště proti free tieru Supabase a úklid starých nahrávek.</p>
+        </div>
+        <div class="card feature">
+          <div class="ico">📜</div>
+          <h4>Historie</h4>
+          <p>Kdo komu co udělal a kdy – role, hesla, bany, smazání, úklid.</p>
+        </div>
       </div>
+
+      <h3>Uživatelé</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Akce</th><th>Co dělá</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Upravit</strong></td><td>Celé jméno a přihlašovací jméno (malá písmena bez diakritiky). Uživatel se pak přihlašuje novým jménem, heslo zůstává. Jde i u vlastního účtu.</td></tr>
+            <tr><td><strong>Udělat učitelem / žákem</strong></td><td>Žák se stane rovnou ověřeným učitelem a odejde ze tříd. Učitel, který má třídy, se na žáka změnit nedá – třídy nejdřív předej nebo smaž.</td></tr>
+            <tr><td><strong>Dát / Odebrat práva admina</strong></td><td>Jen pro ověřené učitele (vznikne „Učitel + Admin“). Vlastní práva si změnit nejde, takže vždy zůstane aspoň jeden admin.</td></tr>
+            <tr><td><strong>⭐ − / +</strong></td><td>U žáka vidíš ohýnky, XP s levelem a hvězdy. Hvězdy můžeš dát i žákům mimo vlastní třídy.</td></tr>
+            <tr><td><strong>Smazat účet</strong></td><td>Natrvalo: přihlášení, nahrávky, obrázky, XP, hvězdy, odznaky, členství ve třídách. Hodnocení a odznaky, které smazaný učitel dal žákům, zůstanou. Účet s právy admina smazat nejde.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Nebezpečné akce (ban, nové heslo, role, smazání) chtějí potvrzení a jednou za přihlášení i tvoje heslo.</p>
+
+      <h3>Úklid starých nahrávek</h3>
+      <p>V záložce <strong>Využití</strong> zvol datum (výchozí je 1. 9. aktuálního školního roku), klikni <strong>Najít</strong> a uvidíš, kolik ohodnocených nahrávek je starších a kolik místa zabírají. <strong>Smazat zvuk</strong> smaže jen jejich zvuk – hodnocení, komentáře, obrázky, XP a odznaky zůstanou a u nahrávky se místo přehrávače ukáže „Zvuk nahrávky byl archivován“. Neohodnocené nahrávky se nikdy nemažou.</p>
 
       <div class="callout callout-warning">
         <span class="callout-ico">⚠️</span>
-        <div><p>Zabanovaný uživatel po přihlášení vidí jen informační obrazovku. Účty jiných adminů ani vlastní účet nelze v administraci upravovat.</p></div>
+        <div><p>Zabanovaný uživatel po přihlášení vidí jen informační obrazovku. Účty jiných adminů nelze z aplikace banovat, resetovat jim heslo ani mazat – nejdřív jim odeber práva admina. Samostatné účty admina (role <code>moderator</code>) se spravují v Supabase.</p></div>
       </div>
     </section>
 
@@ -448,7 +481,7 @@
           <thead><tr><th>Tabulka / bucket</th><th>Obsah</th></tr></thead>
           <tbody>
             <tr><td><code>profiles</code></td><td>Uživatel: jméno, role (<code>student</code> / <code>teacher</code>), hvězdy (od učitele), XP (počítá trigger), streak, zmrazení, <code>is_approved</code>, <code>is_verified</code>, <code>is_moderator</code>, <code>is_banned</code>, GDPR souhlas, sdílení pokroku.</td></tr>
-            <tr><td><code>practice_logs</code></td><td>Odeslaná cvičení: odkaz na audio, délka v sekundách, úkol, hodnocení (1–5), obrázky od učitele (<code>feedback_images</code>, nejvýš 3), „co se povedlo", „co zlepšit", kdo hodnotil.</td></tr>
+            <tr><td><code>practice_logs</code></td><td>Odeslaná cvičení: odkaz na audio (po úklidu prázdný, <code>audio_removed_at</code>), délka v sekundách, úkol, hodnocení (1–5), obrázky od učitele (<code>feedback_images</code>, nejvýš 3), „co se povedlo", „co zlepšit", kdo hodnotil.</td></tr>
             <tr><td><code>awarded_badges</code></td><td>Odznaky od učitele (<code>maly-virtuoz</code>, <code>virtuoz</code>) – ke které nahrávce, kterému žákovi a kdo je dal. Smazáním nahrávky zmizí i její odznaky (migrace 0025).</td></tr>
             <tr><td><code>streak_events</code></td><td>Den po dni: <code>completed</code> nebo <code>freeze_used</code>.</td></tr>
             <tr><td><code>classrooms</code></td><td>Třídy učitele s unikátním <code>join_code</code>.</td></tr>
@@ -459,6 +492,7 @@
             <tr><td><code>reported_content</code></td><td>Nahlášení: důvod, popis, stav (<code>open</code> / <code>resolved</code>), řešení.</td></tr>
             <tr><td>Storage <code>recordings</code></td><td>Audio nahrávky žáků.</td></tr>
             <tr><td>Storage <code>assignment-files</code></td><td>Přílohy úkolů (MIDI / MusicXML, max. 5 MB).</td></tr>
+            <tr><td><code>admin_actions</code></td><td>Historie admin akcí – kdo, co, komu, kdy. Zapisuje jen databáze, čte jen admin (migrace 0027).</td></tr>
             <tr><td>Storage <code>feedback-images</code></td><td>Obrázky k hodnocení (JPEG, max. 5 MB) v <code>&lt;id nahrávky&gt;/…</code>. Vidí je, kdo vidí nahrávku; nahrává a maže jen učitel nebo moderátor (migrace 0026).</td></tr>
           </tbody>
         </table>
