@@ -43,7 +43,7 @@
     <ul class="nav-list">
       <li><a href="#uvod"><span class="ico">🎹</span>O aplikaci</a></li>
       <li><a href="#role"><span class="ico">👥</span>Role a účty</a></li>
-      <li><a href="#gamifikace"><span class="ico">⭐</span>Hvězdy, levely a odznaky</a></li>
+      <li><a href="#gamifikace"><span class="ico">✨</span>XP, hvězdy a levely</a></li>
     </ul>
 
     <div class="nav-label">Návody</div>
@@ -95,8 +95,8 @@
         </div>
         <div class="card feature">
           <div class="ico">🔥</div>
-          <h4>Denní řada a hvězdy</h4>
-          <p>Za každé cvičení hvězda, za pravidelnost streak, levely a odznaky.</p>
+          <h4>Ohýnky, XP a hvězdy</h4>
+          <p>Za pravidelnost ohýnky, za ohodnocené cvičení XP a levely, za vystoupení hvězdy od učitele.</p>
         </div>
         <div class="card feature">
           <div class="ico">💬</div>
@@ -113,7 +113,7 @@
       <div class="callout callout-info">
         <span class="callout-ico">💡</span>
         <div>
-          <p><strong>Princip fungování:</strong> Žák se zaregistruje, učitel jeho účet schválí a žák se připojí do třídy kódem od učitele. Pak plní zadané lekce nebo cvičí samostatně, nahrávky odesílá ke kontrole a sbírá hvězdy, levely a odznaky. Učitel nahrávky poslouchá, hodnotí je 1–5 hvězdičkami a slovním komentářem.</p>
+          <p><strong>Princip fungování:</strong> Žák se zaregistruje, učitel jeho účet schválí a žák se připojí do třídy kódem od učitele. Pak plní zadané lekce nebo cvičí samostatně, nahrávky odesílá ke kontrole a sbírá ohýnky, XP, levely a odznaky. Učitel nahrávky poslouchá, hodnotí je 1–5 notami 🎵 a slovním komentářem a za vystoupení dává hvězdy ⭐.</p>
         </div>
       </div>
 
@@ -161,23 +161,59 @@
 
     <!-- ============ GAMIFIKACE ============ -->
     <section id="gamifikace">
-      <h2><span class="num">3</span>Hvězdy, levely a odznaky</h2>
+      <h2><span class="num">3</span>XP, hvězdy a levely</h2>
 
-      <h3>⭐ Hvězdy a levely</h3>
-      <p>Každá odeslaná nahrávka přidá žákovi <strong>1 hvězdu</strong>. Každých <strong>10 hvězd</strong> = nový level. Při postupu na vyšší level aplikace vystřelí konfety 🎉.</p>
-      <div class="level-track">
-        <div class="level"><div class="n">1</div><div class="t">Nováček</div><div class="s">0–9 ⭐</div></div>
-        <div class="level"><div class="n">2</div><div class="t">Začátečník</div><div class="s">10–19 ⭐</div></div>
-        <div class="level"><div class="n">3</div><div class="t">Talent</div><div class="s">20–29 ⭐</div></div>
-        <div class="level"><div class="n">4</div><div class="t">Šikovný hráč</div><div class="s">30–39 ⭐</div></div>
-        <div class="level"><div class="n">5</div><div class="t">Mistr kláves</div><div class="s">40–49 ⭐</div></div>
-        <div class="level"><div class="n">6</div><div class="t">Virtuoz</div><div class="s">50–59 ⭐</div></div>
-        <div class="level"><div class="n">7+</div><div class="t">Legenda</div><div class="s">60+ ⭐</div></div>
+      <p>Muzio má tři počítadla a každé znamená něco jiného:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Počítadlo</th><th>Za co</th><th>K čemu</th></tr></thead>
+          <tbody>
+            <tr><td>🔥 <strong>Ohýnky</strong> (streak)</td><td>Každý den, kdy žák pošle aspoň jednu nahrávku.</td><td>Pravidelnost.</td></tr>
+            <tr><td>✨ <strong>XP</strong></td><td>Nahrávky, které učitel ohodnotil. Čím delší a lépe zahraná, tím víc XP.</td><td>Level.</td></tr>
+            <tr><td>⭐ <strong>Hvězdy</strong></td><td>Dává je ručně učitel, třeba za vystoupení na koncertě nebo splněnou výzvu.</td><td>Ocenění a odznaky Malý virtuoz / Virtuoz.</td></tr>
+          </tbody>
+        </table>
       </div>
+
+      <h3>✨ Jak se počítají XP</h3>
+      <p>XP za jednu nahrávku = <strong>délka v minutách × hodnocení učitele</strong>.</p>
+      <ul>
+        <li><strong>Délka</strong> se zaokrouhluje nahoru na celé minuty a počítá se nejvýš 5 minut. Nahrávka 40 s = 1 minuta, 3 min 10 s = 4 minuty, 12 minut = 5 minut.</li>
+        <li><strong>Hodnocení</strong> je 1–5 not 🎵 od učitele (5 = nejlepší).</li>
+        <li>Dokud učitel nahrávku <strong>neohodnotí, dává 0 XP</strong> a u nahrávky svítí <em>Čeká na hodnocení</em>. Ohýnek se ale připíše hned po odeslání.</li>
+        <li>Když učitel hodnocení změní nebo nahrávku smaže, XP se samo přepočítá.</li>
+      </ul>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Nahrávka</th><th>Hodnocení</th><th>XP</th></tr></thead>
+          <tbody>
+            <tr><td>40 s z mikrofonu</td><td>🎵🎵🎵🎵🎵</td><td>1 × 5 = <strong>5</strong></td></tr>
+            <tr><td>3 minuty ze souboru</td><td>🎵🎵🎵🎵</td><td>3 × 4 = <strong>12</strong></td></tr>
+            <tr><td>12 minut ze souboru</td><td>🎵🎵🎵</td><td>5 × 3 = <strong>15</strong> (počítá se nejvýš 5 minut)</td></tr>
+            <tr><td>jakákoli, zatím bez hodnocení</td><td>–</td><td><strong>0</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Učitel při hodnocení hned vidí, kolik XP žák dostane, a žák to vidí u každé nahrávky v sekci <strong>Nahrávky</strong>.</p>
+
+      <h3>🏆 Levely</h3>
+      <p>Každých <strong>25 XP</strong> = nový level. Při postupu na vyšší level aplikace vystřelí konfety 🎉.</p>
+      <div class="level-track">
+        <div class="level"><div class="n">1</div><div class="t">Nováček</div><div class="s">0–24 XP</div></div>
+        <div class="level"><div class="n">2</div><div class="t">Začátečník</div><div class="s">25–49 XP</div></div>
+        <div class="level"><div class="n">3</div><div class="t">Talent</div><div class="s">50–74 XP</div></div>
+        <div class="level"><div class="n">4</div><div class="t">Šikovný hráč</div><div class="s">75–99 XP</div></div>
+        <div class="level"><div class="n">5</div><div class="t">Mistr kláves</div><div class="s">100–124 XP</div></div>
+        <div class="level"><div class="n">6</div><div class="t">Virtuoz</div><div class="s">125–149 XP</div></div>
+        <div class="level"><div class="n">7+</div><div class="t">Legenda</div><div class="s">150+ XP</div></div>
+      </div>
+
+      <h3>⭐ Hvězdy od učitele</h3>
+      <p>Hvězdy se samy nepřičítají. Učitel je dává v sekci <strong>Žáci</strong> tlačítky <strong>+</strong> a <strong>−</strong> u řádku <em>Hvězdy za vystoupení</em>, vždy po jedné. Na level nemají vliv, ale odemykají odznaky Malý virtuoz (10 hvězd) a Virtuoz (50 hvězd).</p>
 
       <h3>🔥 Denní řada (streak) a zmrazení</h3>
       <ul>
-        <li>Streak roste o 1 za každý den, kdy žák odešle alespoň jednu nahrávku (víc nahrávek v jeden den streak nezvýší, hvězdy ano).</li>
+        <li>Streak roste o 1 za každý den, kdy žák odešle alespoň jednu nahrávku (víc nahrávek v jeden den streak nezvýší).</li>
         <li><strong>Zmrazení streaku 🧊:</strong> žák má každý kalendářní měsíc 1 zmrazení. Když vynechá <em>právě jeden</em> den, zmrazení se automaticky použije a řada nespadne.</li>
         <li>Vynechá-li dva a více dní (nebo už zmrazení nemá), streak začíná znovu od 1.</li>
       </ul>
@@ -185,11 +221,11 @@
       <h3>🎯 Denní a týdenní úkoly</h3>
       <div class="chips">
         <span class="chip">🎯 Procvič dnes alespoň jednou <small>1/1</small></span>
-        <span class="chip">⭐ Získej 5× hvězdičku tento týden <small>5/5</small></span>
+        <span class="chip">🎙️ Pošli 5 nahrávek tento týden <small>5/5</small></span>
       </div>
 
       <h3>🏅 Odznaky</h3>
-      <p>Odznaky se odemykají automaticky. U zamčených ukazuje profil postup (např. <code>4/7</code>).</p>
+      <p>Odznaky se odemykají automaticky. Profil u každého odznaku ukazuje, jak ho získat, a u zamčených postup (např. <code>4/7</code>).</p>
       <div class="chips">
         <span class="chip">🌱 Nováček <small>1. nahrávka</small></span>
         <span class="chip">🎯 Pravidelnost <small>streak 3</small></span>
@@ -198,8 +234,8 @@
         <span class="chip">🔥🔥🔥 Stoletá legenda <small>streak 100</small></span>
         <span class="chip">🎵 Deset melodií <small>10 nahrávek</small></span>
         <span class="chip">🎼 Padesát melodií <small>50 nahrávek</small></span>
-        <span class="chip">⭐ Malý virtuoz <small>10 hvězd</small></span>
-        <span class="chip">⭐⭐ Virtuoz <small>50 hvězd</small></span>
+        <span class="chip">⭐ Malý virtuoz <small>10 hvězd od učitele</small></span>
+        <span class="chip">⭐⭐ Virtuoz <small>50 hvězd od učitele</small></span>
         <span class="chip">📅 Perfektní týden <small>každý den v týdnu</small></span>
         <span class="chip">🏁 Týdenní cíl <small>3× za týden</small></span>
       </div>
@@ -230,7 +266,7 @@
 
       <div class="callout callout-info">
         <span class="callout-ico">🔑</span>
-        <div><p><strong>Zapomenuté heslo?</strong> Muzio neposílá e-maily. Nové dočasné heslo ti nastaví učitel – dostaneš ho od něj osobně.</p></div>
+        <div><p><strong>Zapomenuté heslo?</strong> Muzio neposílá e-maily. Nové dočasné heslo ti nastaví učitel – dostaneš ho od něj osobně. Po přihlášení si ho změň na vlastní v Profilu → <strong>Změnit heslo</strong>.</p></div>
       </div>
 
       <h3>Navigace žáka</h3>
@@ -238,10 +274,10 @@
         <table>
           <thead><tr><th>Sekce</th><th>Co tam najdeš</th></tr></thead>
           <tbody>
-            <tr><td>🏠 <strong>Dashboard</strong></td><td>Pozdrav, streak 🔥 a hvězdy ⭐, banner <em>Denní úkol</em>, zadané lekce (Hotovo / Čeká), postup na další level a týdenní úkoly.</td></tr>
+            <tr><td>🏠 <strong>Dashboard</strong></td><td>Pozdrav, ohýnky 🔥, XP ✨ a hvězdy ⭐, banner <em>Denní úkol</em>, zadané lekce (Hotovo / Čeká), postup na další level a týdenní úkoly.</td></tr>
             <tr><td>📋 <strong>Lekce</strong></td><td>Všechny úkoly od učitele – co na tebe čeká a historie splněných.</td></tr>
-            <tr><td>🎧 <strong>Nahrávky</strong></td><td>Tvoje odeslané nahrávky se stavem <em>Ohodnoceno</em> / <em>Čeká na hodnocení</em> a zpětnou vazbou učitele (✅ co se povedlo, 🎯 co zlepšit, 1–5 ★).</td></tr>
-            <tr><td>👤 <strong>Profil</strong></td><td>Statistiky, maskot, odznaky, tmavý režim, moje třídy, nahlášení problému a nastavení soukromí.</td></tr>
+            <tr><td>🎧 <strong>Nahrávky</strong></td><td>Tvoje odeslané nahrávky se stavem <em>Ohodnoceno</em> / <em>Čeká na hodnocení</em> a zpětnou vazbou učitele (✅ co se povedlo, 🎯 co zlepšit, 1–5 🎵) a kolik XP ti nahrávka dala.</td></tr>
+            <tr><td>👤 <strong>Profil</strong></td><td>Ohýnky, XP, hvězdy a počet nahrávek, maskot, odznaky s popisem, tmavý režim, moje třídy, změna hesla, nahlášení problému a nastavení soukromí.</td></tr>
           </tbody>
         </table>
       </div>
@@ -250,8 +286,8 @@
       <ol class="steps">
         <li>Na Dashboardu klikni na zadanou lekci (nebo na <em>Denní úkol</em> pro samostatné cvičení).</li>
         <li>Pokud má lekce přiložené noty, otevři je tlačítkem v <strong>Keyboard Utils</strong> a procvič.</li>
-        <li>Stiskni nahrávání 🎤, zahraj a nahrávání ukonči. Nahrávka se odešle učiteli ke kontrole.</li>
-        <li>Připíše se ti hvězda, případně se prodlouží streak. Hodnocení najdeš později v sekci <strong>Nahrávky</strong>.</li>
+        <li>Stiskni nahrávání 🎤 (nejvýš 5 minut), zahraj a nahrávání ukonči. Nahrávka se odešle učiteli ke kontrole. Hotovou nahrávku z telefonu nebo počítače (MP3, M4A, WAV…, max. 25 MB) pošleš přes <strong>✉ Odeslat nahrávku ze souboru</strong> – před odesláním si ji můžeš poslechnout.</li>
+        <li>Prodlouží se ti ohýnek 🔥. Jakmile učitel nahrávku ohodnotí, dostaneš XP ✨ – hodnocení i XP najdeš v sekci <strong>Nahrávky</strong>.</li>
       </ol>
 
       <h3>Připojení do třídy</h3>
@@ -274,9 +310,9 @@
           <thead><tr><th>Sekce</th><th>Co tam najdeš</th></tr></thead>
           <tbody>
             <tr><td>🏠 <strong>Dashboard</strong></td><td>Přehled žáků s vyhledáváním. Nahoře žáci s <em>novými</em> (nehodnocenými) nahrávkami, níže ostatní.</td></tr>
-            <tr><td>👥 <strong>Žáci</strong></td><td>Schvalování nově registrovaných žáků, seznam schválených, reset hesla a smazání profilu.</td></tr>
+            <tr><td>👥 <strong>Žáci</strong></td><td>Schvalování nově registrovaných žáků, seznam schválených s ohýnky a XP, hvězdy ⭐ za vystoupení, reset hesla a smazání profilu.</td></tr>
             <tr><td>🏫 <strong>Učebny</strong></td><td>Třídy, jejich kódy pro připojení, členové a úkoly.</td></tr>
-            <tr><td>👤 <strong>Profil</strong></td><td>Tmavý režim, stav ověření identity, odkaz na moderaci (jen pro adminy).</td></tr>
+            <tr><td>👤 <strong>Profil</strong></td><td>Tmavý režim, změna hesla, stav ověření identity, odkaz na moderaci (jen pro adminy).</td></tr>
           </tbody>
         </table>
       </div>
@@ -297,9 +333,12 @@
       <ul>
         <li><strong>✅ Co se povedlo</strong> – pochvala,</li>
         <li><strong>🎯 Co zlepšit</strong> – na co se zaměřit příště,</li>
-        <li><strong>⭐ Hodnocení</strong> – 1 až 5 hvězdiček.</li>
+        <li><strong>🎵 Hodnocení</strong> – 1 až 5 not. Pod notami hned vidíš, kolik XP žák dostane (např. <em>3 min × 4 = 12 XP</em>).</li>
       </ul>
-      <p>Po odeslání žák hodnocení uvidí v sekci Nahrávky. Nevhodnou nebo nepotřebnou nahrávku lze trvale smazat.</p>
+      <p>Po odeslání žák hodnocení uvidí v sekci Nahrávky a připíšou se mu XP. Když hodnocení později změníš nebo nahrávku smažeš, XP se samo přepočítá. Nevhodnou nebo nepotřebnou nahrávku lze trvale smazat.</p>
+
+      <h3>Hvězdy za vystoupení</h3>
+      <p>V sekci <strong>Žáci</strong> má každý žák řádek <em>Hvězdy za vystoupení</em> s tlačítky <strong>+</strong> a <strong>−</strong>. Hvězdy dávej za koncerty, vystoupení nebo splněné výzvy – nic jiného je nepřidává. Na level nemají vliv (ten určují XP), odemykají odznaky Malý virtuoz a Virtuoz. Hvězdy můžeš dávat jen žákům ze svých tříd.</p>
 
       <div class="callout callout-info">
         <span class="callout-ico">🔐</span>
@@ -375,15 +414,28 @@
 }</code></pre>
 
       <h3>Zápis cvičení</h3>
-      <p>Po každé odeslané nahrávce klient zavolá RPC funkci <code>record_practice_session</code>. Ta atomicky (bez souběhu dvou zařízení) přičte hvězdu, upraví streak, případně spotřebuje zmrazení a zapíše den do <code>streak_events</code>.</p>
+      <p>Po každé odeslané nahrávce klient uloží řádek do <code>practice_logs</code> (včetně délky <code>duration_seconds</code>) a zavolá RPC funkci <code>record_practice_session</code>. Ta atomicky (bez souběhu dvou zařízení) upraví streak, případně spotřebuje zmrazení a zapíše den do <code>streak_events</code>. Hvězdy nepřičítá.</p>
       <pre><code><span class="c">-- zjednodušeně</span>
 <span class="k">if</span> last_date = today      <span class="k">then</span> <span class="c">-- streak beze změny</span>
 <span class="k">elsif</span> last_date = today - 1 <span class="k">then</span> streak := streak + 1
 <span class="k">elsif</span> last_date = today - 2 <span class="k">and</span> freezes &gt; 0 <span class="k">then</span>
   freezes := freezes - 1; streak := streak + 1   <span class="c">-- 🧊 zmrazení</span>
 <span class="k">else</span> streak := 1
-<span class="k">end if</span>;
-stars := stars + 1;</code></pre>
+<span class="k">end if</span>;</code></pre>
+
+      <h3>XP a hvězdy</h3>
+      <p>XP se počítá v databázi, ne v prohlížeči – učitel nevidí všechny nahrávky žáka, takže by jinak viděl jiné číslo než žák. Trigger na <code>practice_logs</code> po každém vložení, ohodnocení, změně hodnocení nebo smazání přepočítá <code>profiles.xp</code> ze všech nahrávek žáka (migrace 0024).</p>
+      <pre><code><span class="k">create function</span> xp_for_log(rating int, duration_seconds int) <span class="k">returns</span> int <span class="k">as</span>
+  <span class="k">case when</span> rating <span class="k">is null then</span> 0                        <span class="c">-- neohodnoceno</span>
+  <span class="k">else</span> least(greatest(ceil(coalesce(duration_seconds, 60) / 60.0), 1), 5)
+       * rating                                          <span class="c">-- minuty (1–5) × hodnocení</span>
+  <span class="k">end</span>;</code></pre>
+      <ul>
+        <li>Starší nahrávky bez známé délky se počítají jako 1 minuta.</li>
+        <li>Hvězdy mění jen <code>teacher_adjust_stars(student, ±1)</code> – smí moderátor nebo ověřený učitel žákovy třídy.</li>
+        <li>Hvězdy, XP a streak nejde měnit přímo z aplikace (hlídá trigger <code>protect_profile_privileges</code>) a nová nahrávka je vždy neohodnocená, takže si žák XP nepřidá sám.</li>
+        <li>Náhled XP u hodnocení počítá kopie vzorce <code>xpForLog</code> ve <code>web/src/lib/game-logic.ts</code>.</li>
+      </ul>
     </section>
 
     <!-- ============ DATABÁZE ============ -->
@@ -393,8 +445,8 @@ stars := stars + 1;</code></pre>
         <table>
           <thead><tr><th>Tabulka / bucket</th><th>Obsah</th></tr></thead>
           <tbody>
-            <tr><td><code>profiles</code></td><td>Uživatel: jméno, role (<code>student</code> / <code>teacher</code>), hvězdy, streak, zmrazení, <code>is_approved</code>, <code>is_verified</code>, <code>is_moderator</code>, <code>is_banned</code>, GDPR souhlas, sdílení pokroku.</td></tr>
-            <tr><td><code>practice_logs</code></td><td>Odeslaná cvičení: odkaz na audio, úkol, hodnocení (1–5), „co se povedlo", „co zlepšit", kdo hodnotil.</td></tr>
+            <tr><td><code>profiles</code></td><td>Uživatel: jméno, role (<code>student</code> / <code>teacher</code>), hvězdy (od učitele), XP (počítá trigger), streak, zmrazení, <code>is_approved</code>, <code>is_verified</code>, <code>is_moderator</code>, <code>is_banned</code>, GDPR souhlas, sdílení pokroku.</td></tr>
+            <tr><td><code>practice_logs</code></td><td>Odeslaná cvičení: odkaz na audio, délka v sekundách, úkol, hodnocení (1–5), „co se povedlo", „co zlepšit", kdo hodnotil.</td></tr>
             <tr><td><code>streak_events</code></td><td>Den po dni: <code>completed</code> nebo <code>freeze_used</code>.</td></tr>
             <tr><td><code>classrooms</code></td><td>Třídy učitele s unikátním <code>join_code</code>.</td></tr>
             <tr><td><code>classroom_members</code></td><td>Žáci v třídách.</td></tr>
