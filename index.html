@@ -3,198 +3,478 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Keyboard Hero Dokumentace</title>
+  <title>Muzio Dokumentace</title>
+  <meta name="description" content="Uživatelská a technická dokumentace k Muzio (dříve Keyboard Hero) – webové aplikaci pro žáky a učitele ZUŠ Moravský Krumlov.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script>
+    try {
+      var t = localStorage.getItem('muzio-docs-theme');
+      if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <aside>
-    <div class="sidebar-header">
-      <span class="logo-icon"></span>
+  <header class="topbar">
+    <a class="brand" href="#uvod">
+      <img src="favicon.svg" alt="">
       <div>
-        <a href="https://tomandes.eu/Keyboard-Hero/"> <div class="title">Keyboard Hero</div> </a>
-        <span class="badge">Dokumentace</span>
+        <div class="brand-name">Muzio</div>
+        <div class="brand-sub">Dokumentace</div>
       </div>
-    </div>
+    </a>
+    <button class="btn btn-ghost" data-menu-toggle aria-expanded="false" aria-label="Otevřít menu">☰ Menu</button>
+  </header>
 
-    <div class="nav-group">
-      <div class="nav-label">Přehled</div>
-      <ul class="nav-list">
-        <li><a href="#uvod" class="active">O aplikaci</a></li>
-        <li><a href="#ukazatele">Odznáčky a ukazatele</a></li>
-      </ul>
-    </div>
+  <aside>
+    <a class="brand" href="https://muzio.tomandes.eu/">
+      <img src="favicon.svg" alt="">
+      <div>
+        <div class="brand-name">Muzio</div>
+        <div class="brand-sub">Dokumentace</div>
+      </div>
+    </a>
 
-    <div class="nav-group">
-      <div class="nav-label">Návod pro uživatele</div>
-      <ul class="nav-list">
-        <li><a href="#prirucka-zak">Návod pro žáka</a></li>
-        <li><a href="#prirucka-admin">Návod pro učitele (Admin)</a></li>
-      </ul>
-    </div>
+    <div class="nav-label">Přehled</div>
+    <ul class="nav-list">
+      <li><a href="#uvod"><span class="ico">🎹</span>O aplikaci</a></li>
+      <li><a href="#role"><span class="ico">👥</span>Role a účty</a></li>
+      <li><a href="#gamifikace"><span class="ico">⭐</span>Hvězdy, levely a odznaky</a></li>
+    </ul>
 
-    <div class="nav-group">
-      <div class="nav-label">Technická specifikace</div>
-      <ul class="nav-list">
-        <li><a href="#technologie">Architektura & Databáze</a></li>
-        <li><a href="#struktura-souboru">Struktura projektu</a></li>
-      </ul>
+    <div class="nav-label">Návody</div>
+    <ul class="nav-list">
+      <li><a href="#zak"><span class="ico">🎵</span>Pro žáka</a></li>
+      <li><a href="#ucitel"><span class="ico">🏫</span>Pro učitele</a></li>
+      <li><a href="#admin"><span class="ico">🛡️</span>Pro admina (moderace)</a></li>
+      <li><a href="#soukromi"><span class="ico">🔒</span>Soukromí a GDPR</a></li>
+    </ul>
+
+    <div class="nav-label">Technika</div>
+    <ul class="nav-list">
+      <li><a href="#architektura"><span class="ico">⚙️</span>Architektura</a></li>
+      <li><a href="#databaze"><span class="ico">🗄️</span>Databáze</a></li>
+      <li><a href="#struktura"><span class="ico">📁</span>Struktura a vývoj</a></li>
+      <li><a href="#design"><span class="ico">🎨</span>Design systém</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <a class="btn btn-primary" href="https://muzio.tomandes.eu/">Otevřít Muzio →</a>
+      <button class="btn btn-ghost" data-theme-toggle>🌙 Tmavý režim</button>
     </div>
   </aside>
 
   <main>
-    <div class="doc-header">
-      <h1><a href="https://tomandes.eu/Keyboard-Hero/">Keyboard Hero</a> Dokumentace</h1>
-      <p>Kompletní technická a uživatelská dokumentace k webové aplikaci pro žáky a učitele ZUŠ Moravský Krumlov.</p>
+    <div class="hero">
+      <span class="eyebrow">Dokumentace</span>
+      <h1>Muzio<span class="accent">.</span></h1>
+      <p class="lead"><strong>Uč se hudbu hravě, každý den.</strong> Uživatelská a technická dokumentace k webové aplikaci pro žáky a učitele ZUŠ Moravský Krumlov. Dříve známé jako Keyboard Hero.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://muzio.tomandes.eu/">Spustit aplikaci</a>
+        <a class="btn btn-ghost" href="https://github.com/tomandesMSH/Muzio">Zdrojový kód na GitHubu</a>
+      </div>
     </div>
 
+    <!-- ============ O APLIKACI ============ -->
     <section id="uvod">
-      <h2>O aplikaci</h2>
+      <h2><span class="num">1</span>O aplikaci</h2>
       <p>
-        <strong><a href="https://tomandes.eu/Keyboard-Hero/">Keyboard Hero</a></strong> je webová aplikace vyvinutá pro žáky Základní umělecké školy Moravský Krumlov. 
-        Jejím hlavním cílem je hravou a motivující formou vést děti k pravidelnému domácímu cvičení na hudební nástroj.
+        <strong><a href="https://muzio.tomandes.eu/">Muzio</a></strong> je webová aplikace vyvinutá pro žáky Základní umělecké školy Moravský Krumlov.
+        Hravou a motivující formou vede děti k pravidelnému domácímu cvičení na hudební nástroj – po vzoru jazykových aplikací typu „denní řada a odměny".
       </p>
 
+      <div class="grid">
+        <div class="card feature">
+          <div class="ico">🎤</div>
+          <h4>Nahrávání v prohlížeči</h4>
+          <p>Žák nahraje cvičení přímo z mobilu nebo počítače, bez instalace.</p>
+        </div>
+        <div class="card feature">
+          <div class="ico">🔥</div>
+          <h4>Denní řada a hvězdy</h4>
+          <p>Za každé cvičení hvězda, za pravidelnost streak, levely a odznaky.</p>
+        </div>
+        <div class="card feature">
+          <div class="ico">💬</div>
+          <h4>Zpětná vazba od učitele</h4>
+          <p>Učitel nahrávku poslechne a napíše, co se povedlo a co zlepšit.</p>
+        </div>
+        <div class="card feature">
+          <div class="ico">🏫</div>
+          <h4>Učebny a úkoly</h4>
+          <p>Učitel zakládá třídy, zadává lekce a přikládá noty (MIDI / MusicXML).</p>
+        </div>
+      </div>
+
       <div class="callout callout-info">
-        <span class="callout-icon">💡</span>
+        <span class="callout-ico">💡</span>
         <div>
-          <strong>Princip fungování:</strong> Žák nahraje svá cvičení přímo v prohlížeči, buduje si cvičební řadu, sbírá hvězdy za účast na koncertě (spravuje učitel) a dostává zpětnou vazbu přímo od učitele. Učitel má samostatné rozhraní pro správu výsledků, schvalování registraci a poslech nahrávek.
+          <p><strong>Princip fungování:</strong> Žák se zaregistruje, učitel jeho účet schválí a žák se připojí do třídy kódem od učitele. Pak plní zadané lekce nebo cvičí samostatně, nahrávky odesílá ke kontrole a sbírá hvězdy, levely a odznaky. Učitel nahrávky poslouchá, hodnotí je 1–5 hvězdičkami a slovním komentářem.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-success">
+        <span class="callout-ico">🎹</span>
+        <div>
+          <p><strong>Propojení s Keyboard Utils:</strong> K úkolu může učitel přiložit notový zápis. Žák ho jedním kliknutím otevře v desktopové aplikaci <a href="https://github.com/tomandesMSH/Keyboard-Utils">Keyboard Utils</a> a procvičí na klavíru.</p>
         </div>
       </div>
     </section>
 
-    <section id="ukazatele">
-      <h2>Odznáčky a ukazatele</h2>
-      <p>V horním panelu rozhraní žáka se zobrazují metriky jeho cvičebního pokroku:</p>
+    <!-- ============ ROLE ============ -->
+    <section id="role">
+      <h2><span class="num">2</span>Role a účty</h2>
+      <p>Muzio rozlišuje tři typy účtů. Všechny se přihlašují <strong>uživatelským jménem a heslem</strong> – nikdo nepotřebuje e-mail.</p>
 
-      <div class="grid-stats">
-        <div class="stat-card">
-          <div class="stat-icon">🔥</div>
-          <div class="stat-info">
-            <h4>Denní řada (Streak)</h4>
-            <p>Počet po sobě jdoucích dní, kdy žák odeslal alespoň jedno cvičení.</p>
-          </div>
+      <div class="grid">
+        <div class="card feature role-card">
+          <div class="ico">🎵</div>
+          <span class="tag">Žák</span>
+          <h4>Cvičí a nahrává</h4>
+          <p>Po registraci čeká na schválení učitelem. Pak vidí zadané lekce, nahrává, sbírá hvězdy a čte hodnocení.</p>
         </div>
-
-        <div class="stat-card">
-          <div class="stat-icon">🎵</div>
-          <div class="stat-info">
-            <h4>Odesláno</h4>
-            <p>Celkový počet nahraných a úspěšně doručených nahrávek cvičení.</p>
-          </div>
+        <div class="card feature role-card">
+          <div class="ico">🧑‍🏫</div>
+          <span class="tag">Učitel</span>
+          <h4>Vede třídy a hodnotí</h4>
+          <p>Po registraci čeká na ověření identity adminem. Schvaluje žáky, zakládá učebny, zadává úkoly a hodnotí nahrávky.</p>
         </div>
-
-        <div class="stat-card">
-          <div class="stat-icon">⭐</div>
-          <div class="stat-info">
-            <h4>Koncerty</h4>
-            <p>Hvězdičky udělované učitelem za výkony na koncertech.</p>
-          </div>
+        <div class="card feature role-card">
+          <div class="ico">🛡️</div>
+          <span class="tag">Učitel + Admin</span>
+          <h4>Moderuje a spravuje účty</h4>
+          <p>Učitel s oprávněním moderátora. Řeší nahlášený obsah, ověřuje učitele, resetuje hesla a může účty zablokovat.</p>
         </div>
       </div>
-    </section>
-
-    <section id="prirucka-zak">
-      <h2>Uživatelská příručka pro žáka</h2>
-      
-      <h3>1. Registrace a přihlášení</h3>
-      <ul>
-        <li><strong>Registrace:</strong> Při prvním spuštění klikněte na <code>Chci se zaregistrovat</code>, vyplňte uživatelské jméno bez diakritiky (např. <code>jannovak</code>), své celé jméno a heslo.</li>
-        <li><strong>Schválení účtu:</strong> Po registraci vyčkejte, než váš účet učitel schválí v administraci.</li>
-        <li><strong>Přihlášení:</strong> Zadejte uživatelské jméno a heslo. Volba <code>Zapamatovat si mě</code> vás udrží přihlášené i po zavření prohlížeče.</li>
-      </ul>
 
       <div class="callout callout-warning">
-        <span class="callout-icon">⚠️</span>
+        <span class="callout-ico">⚠️</span>
         <div>
-          <strong>Důležité:</strong> Uživatelské jméno <strong>nesmí</strong> obsahovat diakritiku ani mezery, slouží k vygenerování interního e-mailu (<code>jannovak@keyboardhero.internal</code>).
+          <p><strong>Uživatelské jméno</strong> pište bez diakritiky a mezer (např. <code>jannovak</code>). Aplikace z něj vytváří interní e-mail <code>jannovak@keyboardhero.internal</code> pro Supabase Auth – diakritika by validaci rozbila.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GAMIFIKACE ============ -->
+    <section id="gamifikace">
+      <h2><span class="num">3</span>Hvězdy, levely a odznaky</h2>
+
+      <h3>⭐ Hvězdy a levely</h3>
+      <p>Každá odeslaná nahrávka přidá žákovi <strong>1 hvězdu</strong>. Každých <strong>10 hvězd</strong> = nový level. Při postupu na vyšší level aplikace vystřelí konfety 🎉.</p>
+      <div class="level-track">
+        <div class="level"><div class="n">1</div><div class="t">Nováček</div><div class="s">0–9 ⭐</div></div>
+        <div class="level"><div class="n">2</div><div class="t">Začátečník</div><div class="s">10–19 ⭐</div></div>
+        <div class="level"><div class="n">3</div><div class="t">Talent</div><div class="s">20–29 ⭐</div></div>
+        <div class="level"><div class="n">4</div><div class="t">Šikovný hráč</div><div class="s">30–39 ⭐</div></div>
+        <div class="level"><div class="n">5</div><div class="t">Mistr kláves</div><div class="s">40–49 ⭐</div></div>
+        <div class="level"><div class="n">6</div><div class="t">Virtuoz</div><div class="s">50–59 ⭐</div></div>
+        <div class="level"><div class="n">7+</div><div class="t">Legenda</div><div class="s">60+ ⭐</div></div>
+      </div>
+
+      <h3>🔥 Denní řada (streak) a zmrazení</h3>
+      <ul>
+        <li>Streak roste o 1 za každý den, kdy žák odešle alespoň jednu nahrávku (víc nahrávek v jeden den streak nezvýší, hvězdy ano).</li>
+        <li><strong>Zmrazení streaku 🧊:</strong> žák má každý kalendářní měsíc 1 zmrazení. Když vynechá <em>právě jeden</em> den, zmrazení se automaticky použije a řada nespadne.</li>
+        <li>Vynechá-li dva a více dní (nebo už zmrazení nemá), streak začíná znovu od 1.</li>
+      </ul>
+
+      <h3>🎯 Denní a týdenní úkoly</h3>
+      <div class="chips">
+        <span class="chip">🎯 Procvič dnes alespoň jednou <small>1/1</small></span>
+        <span class="chip">⭐ Získej 5× hvězdičku tento týden <small>5/5</small></span>
+      </div>
+
+      <h3>🏅 Odznaky</h3>
+      <p>Odznaky se odemykají automaticky. U zamčených ukazuje profil postup (např. <code>4/7</code>).</p>
+      <div class="chips">
+        <span class="chip">🌱 Nováček <small>1. nahrávka</small></span>
+        <span class="chip">🎯 Pravidelnost <small>streak 3</small></span>
+        <span class="chip">🔥 Týden v ohni <small>streak 7</small></span>
+        <span class="chip">🔥🔥 Měsíc disciplíny <small>streak 30</small></span>
+        <span class="chip">🔥🔥🔥 Stoletá legenda <small>streak 100</small></span>
+        <span class="chip">🎵 Deset melodií <small>10 nahrávek</small></span>
+        <span class="chip">🎼 Padesát melodií <small>50 nahrávek</small></span>
+        <span class="chip">⭐ Malý virtuoz <small>10 hvězd</small></span>
+        <span class="chip">⭐⭐ Virtuoz <small>50 hvězd</small></span>
+        <span class="chip">📅 Perfektní týden <small>každý den v týdnu</small></span>
+        <span class="chip">🏁 Týdenní cíl <small>3× za týden</small></span>
+      </div>
+
+      <h3>🎸 Maskot</h3>
+      <p>V profilu si žák vybírá maskota. Další se odemykají s levelem:</p>
+      <div class="chips">
+        <span class="chip">🎵 Nota <small>lvl 1</small></span>
+        <span class="chip">🎸 Kytara <small>lvl 2</small></span>
+        <span class="chip">🥁 Bubny <small>lvl 3</small></span>
+        <span class="chip">🎹 Klávesy <small>lvl 4</small></span>
+        <span class="chip">🎤 Mikrofon <small>lvl 5</small></span>
+      </div>
+    </section>
+
+    <!-- ============ ŽÁK ============ -->
+    <section id="zak">
+      <h2><span class="num">4</span>Návod pro žáka</h2>
+
+      <h3>Registrace a přihlášení</h3>
+      <ol class="steps">
+        <li>Na <a href="https://muzio.tomandes.eu/">přihlašovací stránce</a> zvol <strong>Žák</strong> a přepni na registraci.</li>
+        <li>Vyplň <strong>uživatelské jméno</strong> (bez diakritiky), <strong>celé jméno</strong>, <strong>datum narození</strong> a <strong>heslo</strong>.</li>
+        <li>Potvrď souhlas se zpracováním osobních údajů. Je-li ti méně než 16 let, vyplní se <strong>jméno zákonného zástupce</strong> a souhlas dává rodič.</li>
+        <li>Počkej, až tvůj účet <strong>schválí učitel</strong> – do té doby uvidíš obrazovku „Čekáš na schválení".</li>
+        <li>Přihlas se. Na společném školním počítači odškrtni <code>Zapamatovat si mě</code> – po zavření prohlížeče se odhlásíš.</li>
+      </ol>
+
+      <div class="callout callout-info">
+        <span class="callout-ico">🔑</span>
+        <div><p><strong>Zapomenuté heslo?</strong> Muzio neposílá e-maily. Nové dočasné heslo ti nastaví učitel – dostaneš ho od něj osobně.</p></div>
+      </div>
+
+      <h3>Navigace žáka</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Sekce</th><th>Co tam najdeš</th></tr></thead>
+          <tbody>
+            <tr><td>🏠 <strong>Dashboard</strong></td><td>Pozdrav, streak 🔥 a hvězdy ⭐, banner <em>Denní úkol</em>, zadané lekce (Hotovo / Čeká), postup na další level a týdenní úkoly.</td></tr>
+            <tr><td>📋 <strong>Lekce</strong></td><td>Všechny úkoly od učitele – co na tebe čeká a historie splněných.</td></tr>
+            <tr><td>🎧 <strong>Nahrávky</strong></td><td>Tvoje odeslané nahrávky se stavem <em>Ohodnoceno</em> / <em>Čeká na hodnocení</em> a zpětnou vazbou učitele (✅ co se povedlo, 🎯 co zlepšit, 1–5 ★).</td></tr>
+            <tr><td>👤 <strong>Profil</strong></td><td>Statistiky, maskot, odznaky, tmavý režim, moje třídy, nahlášení problému a nastavení soukromí.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Jak odevzdat cvičení</h3>
+      <ol class="steps">
+        <li>Na Dashboardu klikni na zadanou lekci (nebo na <em>Denní úkol</em> pro samostatné cvičení).</li>
+        <li>Pokud má lekce přiložené noty, otevři je tlačítkem v <strong>Keyboard Utils</strong> a procvič.</li>
+        <li>Stiskni nahrávání 🎤, zahraj a nahrávání ukonči. Nahrávka se odešle učiteli ke kontrole.</li>
+        <li>Připíše se ti hvězda, případně se prodlouží streak. Hodnocení najdeš později v sekci <strong>Nahrávky</strong>.</li>
+      </ol>
+
+      <h3>Připojení do třídy</h3>
+      <p>V Profilu → <strong>Moje třídy</strong> zadej <em>Kód od učitele</em>. Pak uvidíš úkoly zadané celé třídě.</p>
+
+      <h3>Nahlášení problému</h3>
+      <p>U hodnocení nahrávky nebo v profilu můžeš něco nahlásit (<em>Nevhodná zpráva</em>, <em>Nevhodné chování</em>, <em>Jiné</em>). Nahlášení řeší admin.</p>
+    </section>
+
+    <!-- ============ UČITEL ============ -->
+    <section id="ucitel">
+      <h2><span class="num">5</span>Návod pro učitele</h2>
+
+      <h3>Registrace a ověření</h3>
+      <p>Na přihlašovací stránce zvol <strong>Učitel</strong> a zaregistruj se. Účet musí nejprve <strong>ověřit admin</strong> (obrazovka „Čekáš na ověření") – až pak se otevře učitelský panel.</p>
+
+      <h3>Navigace učitele</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Sekce</th><th>Co tam najdeš</th></tr></thead>
+          <tbody>
+            <tr><td>🏠 <strong>Dashboard</strong></td><td>Přehled žáků s vyhledáváním. Nahoře žáci s <em>novými</em> (nehodnocenými) nahrávkami, níže ostatní.</td></tr>
+            <tr><td>👥 <strong>Žáci</strong></td><td>Schvalování nově registrovaných žáků, seznam schválených, reset hesla a smazání profilu.</td></tr>
+            <tr><td>🏫 <strong>Učebny</strong></td><td>Třídy, jejich kódy pro připojení, členové a úkoly.</td></tr>
+            <tr><td>👤 <strong>Profil</strong></td><td>Tmavý režim, stav ověření identity, odkaz na moderaci (jen pro adminy).</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Schvalování žáků</h3>
+      <p>V sekci <strong>Žáci</strong> se nahoře zobrazují nově registrovaní žáci. Po schválení se žák může přihlásit a cvičit. Profil žáka lze smazat (potvrzuje se heslem učitele) – smaže se tím účet i nahrávky.</p>
+
+      <h3>Učebny a úkoly</h3>
+      <ol class="steps">
+        <li>V <strong>Učebny</strong> vytvoř třídu (např. <code>3.A</code>). Aplikace vygeneruje <strong>kód pro připojení</strong>.</li>
+        <li>Kód dej žákům – připojí se v Profilu → Moje třídy.</li>
+        <li>Zadej úkol (název a popis) celé třídě, nebo jen konkrétnímu žákovi.</li>
+        <li>Volitelně přilož notový zápis <code>.mid</code>, <code>.midi</code>, <code>.musicxml</code>, <code>.mxl</code> nebo <code>.xml</code> (max. 5 MB) pro Keyboard Utils.</li>
+      </ol>
+
+      <h3>Hodnocení nahrávek</h3>
+      <p>Klikni na nahrávku žáka, přehraj ji a vyplň:</p>
+      <ul>
+        <li><strong>✅ Co se povedlo</strong> – pochvala,</li>
+        <li><strong>🎯 Co zlepšit</strong> – na co se zaměřit příště,</li>
+        <li><strong>⭐ Hodnocení</strong> – 1 až 5 hvězdiček.</li>
+      </ul>
+      <p>Po odeslání žák hodnocení uvidí v sekci Nahrávky. Nevhodnou nebo nepotřebnou nahrávku lze trvale smazat.</p>
+
+      <div class="callout callout-info">
+        <span class="callout-ico">🔐</span>
+        <div><p><strong>Soukromé cvičení:</strong> nahrávky k zadaným úkolům vidí učitel vždy. Samostatné procvičování (mimo úkoly) vidí jen tehdy, když to žák povolí v Profilu volbou <em>Sdílet učiteli i samostatné procvičování</em>.</p></div>
+      </div>
+
+      <h3>Reset hesla žáka</h3>
+      <p>Žák zapomněl heslo? V sekci Žáci nastav nové dočasné heslo. Aplikace generuje hesla bez snadno zaměnitelných znaků (bez <code>i l o 0 1</code>), aby šla snadno nadiktovat dítěti.</p>
+    </section>
+
+    <!-- ============ ADMIN ============ -->
+    <section id="admin">
+      <h2><span class="num">6</span>Návod pro admina (moderace)</h2>
+      <p>Admin je učitel s příznakem <code>is_moderator</code>. Po každém přihlášení si vybere, který panel otevřít – <strong>učitelský</strong> (žáci, učebny, hodnocení) nebo <strong>Admin dashboard</strong>.</p>
+
+      <div class="grid">
+        <div class="card feature">
+          <div class="ico">🚩</div>
+          <h4>Nahlášený obsah</h4>
+          <p>Kdo co nahlásil, koho se to týká a proč. Admin hlášení vyřeší, smaže nahrávku nebo pozastaví účet.</p>
+        </div>
+        <div class="card feature">
+          <div class="ico">👤</div>
+          <h4>Uživatelé</h4>
+          <p>Všichni žáci a učitelé: schválit žáka, ověřit učitele, resetovat heslo, zabanovat / obnovit účet.</p>
+        </div>
+        <div class="card feature">
+          <div class="ico">🎧</div>
+          <h4>Nahrávky</h4>
+          <p>Vyhledání žáka a přehled jeho nahrávek s možností smazání.</p>
         </div>
       </div>
 
-      <h3>2. Funkce v rozhraní žáka</h3>
+      <div class="callout callout-warning">
+        <span class="callout-ico">⚠️</span>
+        <div><p>Zabanovaný uživatel po přihlášení vidí jen informační obrazovku. Účty jiných adminů ani vlastní účet nelze v administraci upravovat.</p></div>
+      </div>
+    </section>
+
+    <!-- ============ SOUKROMÍ ============ -->
+    <section id="soukromi">
+      <h2><span class="num">7</span>Soukromí a GDPR</h2>
       <ul>
-        <li><strong>🎼 Kalendář:</strong> Přehledně zobrazuje aktuální měsíc. Dny, kdy žák odeslal cvičení, jsou barevně zvýrazněny.</li>
-        <li><strong>🎤 Nahrávání cvičení:</strong> Stisknutím tlačítka mikrofonu zahájíte nahrávání. Dalším stisknutím nahrávání ukončíte a nahrávka se automaticky odešle učiteli.</li>
-        <li><strong>💬 Hodnocení od učitele:</strong> V této sekci žák vidí zpětnou vazbu a komentáře, které učitel zanechal k jeho nahrávkám.</li>
-        <li><strong>🎧 Nedávné nahrávky:</strong> Seznam posledních nahrávek s možností jejich stažení. <em>Pozor: starší nahrávky se z úložiště průběžně promazávají!</em></li>
-        <li><strong>🏆 Žebříček:</strong> Přehled nejlepších žáků seřazený podle aktivity.</li>
-        <li><strong>🔔 Novinky:</strong> Důležitá upozornění a zprávy vložené učitelem.</li>
+        <li><strong>Souhlas při registraci:</strong> zpracovávají se jméno, audio nahrávky a pokrok. Ukládá se datum narození, kdo souhlas dal a kdy.</li>
+        <li><strong>Děti do 16 let:</strong> souhlas dává zákonný zástupce (GDPR čl. 8, použita nejpřísnější běžná hranice v EU).</li>
+        <li><strong>Žádné e-maily:</strong> aplikace nesbírá e-mailové adresy, jen uživatelské jméno.</li>
+        <li><strong>Smazání údajů:</strong> o smazání účtu a všech nahrávek žák požádá svého učitele.</li>
+        <li><strong>Přístup k datům</strong> hlídají pravidla Row Level Security přímo v databázi – učitel vidí jen své žáky.</li>
       </ul>
     </section>
 
-    <section id="prirucka-admin">
-      <h2>Uživatelská příručka pro učitele (Admin)</h2>
+    <!-- ============ ARCHITEKTURA ============ -->
+    <section id="architektura">
+      <h2><span class="num">8</span>Architektura</h2>
+      <p>Muzio je single-page aplikace bez vlastního serveru. Backend (autentizace, Postgres, úložiště souborů) zajišťuje <strong>Supabase</strong>, frontend běží na <strong>Vercelu</strong>.</p>
 
-      <h3>1. Přihlášení do administrace</h3>
-      <p>Do administrace se vstupuje přes odkaz <code>Admin Login</code> na přihlašovací stránce nebo přímo na souboru <code>admin.html</code>. Účet musí mít v databázi nastavenou roli <code>admin</code>.</p>
+      <div class="chips">
+        <span class="chip">⚛️ React 19</span>
+        <span class="chip">🟦 TypeScript</span>
+        <span class="chip">⚡ Vite</span>
+        <span class="chip">🎨 Tailwind CSS 4</span>
+        <span class="chip">🧭 React Router 7</span>
+        <span class="chip">🟢 Supabase</span>
+        <span class="chip">🧪 Vitest</span>
+        <span class="chip">▲ Vercel</span>
+      </div>
 
-      <h3>2. Schvalování žáků</h3>
-      <p>V sekci <strong>Čekající registrace</strong> se zobrazují nově zaregistrovaní žáci. Učitel může každou žádost schválit nebo zamítnout.</p>
-
-      <h3>3. Správa žáků a hodnocení</h3>
-      <ul>
-        <li><strong>Úprava hodnot (Streak a Koncerty):</strong> Učitel může tlačítky <code>+</code> / <code>-</code> upravit počet dní v denní řadě (🔥) nebo udělit hvězdičky za koncert (⭐) a změny uložit.</li>
-        <li><strong>Poslech a komentáře:</strong> Kliknutím na nahrávky žáka lze přehrát audio soubor, připsat k němu hodnocení/komentář nebo nepotřebnou nahrávku trvale smazat.</li>
-      </ul>
-    </section>
-
-    <section id="technologie">
-      <h2>Architektura & Databáze</h2>
-      <p>Aplikace je postavena na čisto klientském JS s využitím cloudové platformy <strong>Supabase</strong> pro backendové služby (Auth, Postgres DB a Storage).</p>
-
-      <h3>Generování vnitřních e-mailů</h3>
-      <p>Jelikož děti v ZUŠ často nemají vlastní e-mailové adresy, aplikace automaticky převádí uživatelské jméno na vnitřní e-mailový tvar:</p>
-      <pre><code>function makeInternalEmail(username) {
-  const cleanUsername = username.trim().toLowerCase().replace(/\s+/g, '');
-  return `${cleanUsername}@keyboardhero.internal`;
+      <h3>Interní e-maily</h3>
+      <p>Děti v ZUŠ často nemají e-mail, proto aplikace převádí uživatelské jméno na interní adresu (stejná konvence jako v původním Keyboard Hero):</p>
+      <pre><code><span class="k">export function</span> makeInternalEmail(username: string): string {
+  <span class="k">const</span> clean = username.trim().toLowerCase().replace(/\s+/g, '')
+  <span class="k">return</span> `${clean}@keyboardhero.internal`
 }</code></pre>
 
-      <h3>Databázové tabulky v Supabase</h3>
-      <ul>
-        <li><code>profiles</code> – Profil uživatele (jméno, role, streak, stars, status schválení <code>is_approved</code>).</li>
-        <li><code>practice_logs</code> – Záznamy o odeslaných cvičeních a odkazy na audio nahrávky.</li>
-        <li><code>comments</code> – Slovní hodnocení učitele přiřazená k nahrávkám.</li>
-        <li><code>news</code> – Systémové novinky a oznámení pro žáky.</li>
-      </ul>
+      <h3>Zápis cvičení</h3>
+      <p>Po každé odeslané nahrávce klient zavolá RPC funkci <code>record_practice_session</code>. Ta atomicky (bez souběhu dvou zařízení) přičte hvězdu, upraví streak, případně spotřebuje zmrazení a zapíše den do <code>streak_events</code>.</p>
+      <pre><code><span class="c">-- zjednodušeně</span>
+<span class="k">if</span> last_date = today      <span class="k">then</span> <span class="c">-- streak beze změny</span>
+<span class="k">elsif</span> last_date = today - 1 <span class="k">then</span> streak := streak + 1
+<span class="k">elsif</span> last_date = today - 2 <span class="k">and</span> freezes &gt; 0 <span class="k">then</span>
+  freezes := freezes - 1; streak := streak + 1   <span class="c">-- 🧊 zmrazení</span>
+<span class="k">else</span> streak := 1
+<span class="k">end if</span>;
+stars := stars + 1;</code></pre>
     </section>
 
-    <section id="struktura-souboru">
-      <h2>Struktura projektu</h2>
-      <div class="table-container">
+    <!-- ============ DATABÁZE ============ -->
+    <section id="databaze">
+      <h2><span class="num">9</span>Databáze</h2>
+      <div class="table-wrap">
         <table>
-          <thead>
-            <tr>
-              <th>Soubor</th>
-              <th>Význam a funkce</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Tabulka / bucket</th><th>Obsah</th></tr></thead>
           <tbody>
-            <tr>
-              <td><code>index.html</code></td>
-              <td>Hlavní klientská aplikace pro žáky (přihlášení, kalendář, nahrávání, žebříček).</td>
-            </tr>
-            <tr>
-              <td><code>admin.html</code></td>
-              <td>Administrátorský panel pro učitele (schvalování, hodnocení, bodování, poslech nahrávek).</td>
-            </tr>
-            <tr>
-              <td><code>style.css</code></td>
-              <td>Stylování uživatelského rozhraní a dokumentace.</td>
-            </tr>
-            <tr>
-              <td><code>script.js</code></td>
-              <td>Skript zajišťující plynulé rolování a zvýraznění aktivních sekcí v dokumentaci.</td>
-            </tr>
+            <tr><td><code>profiles</code></td><td>Uživatel: jméno, role (<code>student</code> / <code>teacher</code>), hvězdy, streak, zmrazení, <code>is_approved</code>, <code>is_verified</code>, <code>is_moderator</code>, <code>is_banned</code>, GDPR souhlas, sdílení pokroku.</td></tr>
+            <tr><td><code>practice_logs</code></td><td>Odeslaná cvičení: odkaz na audio, úkol, hodnocení (1–5), „co se povedlo", „co zlepšit", kdo hodnotil.</td></tr>
+            <tr><td><code>streak_events</code></td><td>Den po dni: <code>completed</code> nebo <code>freeze_used</code>.</td></tr>
+            <tr><td><code>classrooms</code></td><td>Třídy učitele s unikátním <code>join_code</code>.</td></tr>
+            <tr><td><code>classroom_members</code></td><td>Žáci v třídách.</td></tr>
+            <tr><td><code>assignments</code></td><td>Úkoly: název, popis, volitelná příloha s notami.</td></tr>
+            <tr><td><code>assignment_recipients</code></td><td>Úkoly zadané konkrétním žákům.</td></tr>
+            <tr><td><code>teacher_student_links</code>, <code>invite_codes</code></td><td>Párování učitele a žáka.</td></tr>
+            <tr><td><code>reported_content</code></td><td>Nahlášení: důvod, popis, stav (<code>open</code> / <code>resolved</code>), řešení.</td></tr>
+            <tr><td>Storage <code>recordings</code></td><td>Audio nahrávky žáků.</td></tr>
+            <tr><td>Storage <code>assignment-files</code></td><td>Přílohy úkolů (MIDI / MusicXML, max. 5 MB).</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted">Schéma se mění SQL migracemi v <code>web/supabase/migrations/</code> (0001–0023), které se spouštějí ručně v SQL editoru Supabase.</p>
+    </section>
+
+    <!-- ============ STRUKTURA ============ -->
+    <section id="struktura">
+      <h2><span class="num">10</span>Struktura a vývoj</h2>
+      <pre><code>web/
+├── public/              <span class="c"># favicon, loga (ZUŠ MK, Keyboard Utils)</span>
+├── supabase/migrations/ <span class="c"># SQL migrace databáze</span>
+└── src/
+    ├── design/tokens/   <span class="c"># barvy, typografie, spacing</span>
+    ├── components/
+    │   ├── ui/          <span class="c"># Button, Card, Input, Modal, Toast…</span>
+    │   ├── audio/       <span class="c"># AudioPlayer, RecordingUI, Waveform</span>
+    │   ├── gamification/<span class="c"># Streak, XP, Confetti, Quests, LevelProgress</span>
+    │   ├── classrooms/  <span class="c"># připojení do třídy, nové úkoly, přílohy</span>
+    │   └── layout/      <span class="c"># AppShell, Sidebar, BottomNav</span>
+    ├── screens/
+    │   ├── student/     <span class="c"># Dashboard, Lessons, Recording, Feedback, Profile</span>
+    │   ├── teacher/     <span class="c"># Dashboard, Students, Classrooms, Grading, Profile</span>
+    │   └── moderator/   <span class="c"># Queue (Admin dashboard), UsersSection</span>
+    ├── lib/             <span class="c"># auth, game-logic, consent, data/, supabase</span>
+    └── router.tsx</code></pre>
+
+      <h3>Spuštění lokálně</h3>
+      <pre><code>cd web
+npm install
+cp .env.example .env.local   <span class="c"># URL a anon key Supabase projektu</span>
+
+npm run dev       <span class="c"># vývojový server</span>
+npm run build     <span class="c"># typová kontrola + produkční build</span>
+npm test          <span class="c"># testy (Vitest)</span>
+npm run lint      <span class="c"># oxlint</span></code></pre>
+
+      <h3>Routy</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Cesta</th><th>Obrazovka</th></tr></thead>
+          <tbody>
+            <tr><td><code>/login</code></td><td>Přihlášení a registrace (žák / učitel)</td></tr>
+            <tr><td><code>/panel</code></td><td>Výběr panelu pro Učitele + Admina</td></tr>
+            <tr><td><code>/student</code>, <code>/student/lessons</code>, <code>/student/recording</code>, <code>/student/feedback</code>, <code>/student/profile</code></td><td>Rozhraní žáka</td></tr>
+            <tr><td><code>/teacher</code>, <code>/teacher/students</code>, <code>/teacher/classrooms</code>, <code>/teacher/grading</code>, <code>/teacher/profile</code></td><td>Rozhraní učitele</td></tr>
+            <tr><td><code>/moderator</code></td><td>Admin dashboard</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
+    <!-- ============ DESIGN ============ -->
+    <section id="design">
+      <h2><span class="num">11</span>Design systém</h2>
+      <p>Minimalistická paleta <em>Paper / Stone / Coral / Ink</em> s jemnými „clay" (vystouplými) stíny. Nadpisy <strong>Poppins</strong>, text <strong>Inter</strong>. Aplikace i tato dokumentace podporují světlý a tmavý režim.</p>
+      <div class="swatches">
+        <div class="swatch"><div class="color" style="background:#F6F4F1"></div><div class="meta"><b>Paper</b><span>#F6F4F1</span></div></div>
+        <div class="swatch"><div class="color" style="background:#E4DED2"></div><div class="meta"><b>Stone</b><span>#E4DED2</span></div></div>
+        <div class="swatch"><div class="color" style="background:#EDEAE5"></div><div class="meta"><b>Stone light</b><span>#EDEAE5</span></div></div>
+        <div class="swatch"><div class="color" style="background:#F95C4B"></div><div class="meta"><b>Coral</b><span>#F95C4B</span></div></div>
+        <div class="swatch"><div class="color" style="background:#E14432"></div><div class="meta"><b>Coral dark</b><span>#E14432</span></div></div>
+        <div class="swatch"><div class="color" style="background:#0A0A0A"></div><div class="meta"><b>Ink</b><span>#0A0A0A</span></div></div>
+        <div class="swatch"><div class="color" style="background:#625B4F"></div><div class="meta"><b>Muted</b><span>#625B4F</span></div></div>
+        <div class="swatch"><div class="color" style="background:#17181B"></div><div class="meta"><b>Dark bg</b><span>#17181B</span></div></div>
+      </div>
+    </section>
+
     <footer>
-      <a href="https://tomandes.eu/Keyboard-Hero/">Keyboard Hero</a> | Tomáš Vaněk, 2026 - Vytvořeno s ♡ pro ZUŠ Moravský Krumlov
+      <span><a href="https://muzio.tomandes.eu/">Muzio</a> (dříve Keyboard Hero) · Tomáš Vaněk, 2026</span>
+      <span>Vytvořeno s ♡ pro <a href="https://www.zusmk.cz/">ZUŠ Moravský Krumlov</a></span>
     </footer>
   </main>
 
