@@ -170,7 +170,7 @@
           <tbody>
             <tr><td>🔥 <strong>Ohýnky</strong> (streak)</td><td>Každý den, kdy žák pošle aspoň jednu nahrávku.</td><td>Pravidelnost.</td></tr>
             <tr><td>✨ <strong>XP</strong></td><td>Nahrávky, které učitel ohodnotil. Čím delší a lépe zahraná, tím víc XP.</td><td>Level.</td></tr>
-            <tr><td>⭐ <strong>Hvězdy</strong></td><td>Dává je ručně učitel, třeba za vystoupení na koncertě nebo splněnou výzvu.</td><td>Ocenění a odznaky Malý virtuoz / Virtuoz.</td></tr>
+            <tr><td>⭐ <strong>Hvězdy</strong></td><td>Dává je ručně učitel, třeba za vystoupení na koncertě nebo splněnou výzvu.</td><td>Ocenění za vystoupení.</td></tr>
           </tbody>
         </table>
       </div>
@@ -209,7 +209,7 @@
       </div>
 
       <h3>⭐ Hvězdy od učitele</h3>
-      <p>Hvězdy se samy nepřičítají. Učitel je dává v sekci <strong>Žáci</strong> tlačítky <strong>+</strong> a <strong>−</strong> u řádku <em>Hvězdy za vystoupení</em>, vždy po jedné. Na level nemají vliv, ale odemykají odznaky Malý virtuoz (10 hvězd) a Virtuoz (50 hvězd).</p>
+      <p>Hvězdy se samy nepřičítají. Učitel je dává v sekci <strong>Žáci</strong> tlačítky <strong>+</strong> a <strong>−</strong> u řádku <em>Hvězdy za vystoupení</em>, vždy po jedné. Na level ani na odznaky nemají vliv.</p>
 
       <h3>🔥 Denní řada (streak) a zmrazení</h3>
       <ul>
@@ -225,7 +225,7 @@
       </div>
 
       <h3>🏅 Odznaky</h3>
-      <p>Odznaky se odemykají automaticky. Profil u každého odznaku ukazuje, jak ho získat, a u zamčených postup (např. <code>4/7</code>).</p>
+      <p>Většina odznaků se odemyká automaticky. Profil u každého odznaku ukazuje, jak ho získat, a u zamčených postup (např. <code>4/7</code>). Malého virtuoze a Virtuoze uděluje učitel při hodnocení konkrétní nahrávky – dají se získat opakovaně a profil ukáže, kolikrát (např. <em>✓ Získáno ×3</em>).</p>
       <div class="chips">
         <span class="chip">🌱 Nováček <small>1. nahrávka</small></span>
         <span class="chip">🎯 Pravidelnost <small>streak 3</small></span>
@@ -234,8 +234,8 @@
         <span class="chip">🔥🔥🔥 Stoletá legenda <small>streak 100</small></span>
         <span class="chip">🎵 Deset melodií <small>10 nahrávek</small></span>
         <span class="chip">🎼 Padesát melodií <small>50 nahrávek</small></span>
-        <span class="chip">⭐ Malý virtuoz <small>10 hvězd od učitele</small></span>
-        <span class="chip">⭐⭐ Virtuoz <small>50 hvězd od učitele</small></span>
+        <span class="chip">⭐ Malý virtuoz <small>od učitele: skladba bez chyb</small></span>
+        <span class="chip">⭐⭐ Virtuoz <small>od učitele: splněná výzva</small></span>
         <span class="chip">📅 Perfektní týden <small>každý den v týdnu</small></span>
         <span class="chip">🏁 Týdenní cíl <small>3× za týden</small></span>
       </div>
@@ -276,7 +276,7 @@
           <tbody>
             <tr><td>🏠 <strong>Dashboard</strong></td><td>Pozdrav, ohýnky 🔥, XP ✨ a hvězdy ⭐, banner <em>Denní úkol</em>, zadané lekce (Hotovo / Čeká), postup na další level a týdenní úkoly.</td></tr>
             <tr><td>📋 <strong>Lekce</strong></td><td>Všechny úkoly od učitele – co na tebe čeká a historie splněných.</td></tr>
-            <tr><td>🎧 <strong>Nahrávky</strong></td><td>Tvoje odeslané nahrávky se stavem <em>Ohodnoceno</em> / <em>Čeká na hodnocení</em> a zpětnou vazbou učitele (✅ co se povedlo, 🎯 co zlepšit, 1–5 🎵) a kolik XP ti nahrávka dala.</td></tr>
+            <tr><td>🎧 <strong>Nahrávky</strong></td><td>Tvoje odeslané nahrávky se stavem <em>Ohodnoceno</em> / <em>Čeká na hodnocení</em> a zpětnou vazbou učitele (✅ co se povedlo, 🎯 co zlepšit, 1–5 🎵), kolik XP ti nahrávka dala a odznak 🏅, pokud ti ho učitel dal.</td></tr>
             <tr><td>👤 <strong>Profil</strong></td><td>Ohýnky, XP, hvězdy a počet nahrávek, maskot, odznaky s popisem, tmavý režim, moje třídy, změna hesla, nahlášení problému a nastavení soukromí.</td></tr>
           </tbody>
         </table>
@@ -334,11 +334,12 @@
         <li><strong>✅ Co se povedlo</strong> – pochvala,</li>
         <li><strong>🎯 Co zlepšit</strong> – na co se zaměřit příště,</li>
         <li><strong>🎵 Hodnocení</strong> – 1 až 5 not. Pod notami hned vidíš, kolik XP žák dostane (např. <em>3 min × 4 = 12 XP</em>).</li>
+        <li><strong>🏅 Odznak za tuhle nahrávku</strong> (nepovinné) – <em>⭐ Malý virtuoz · bez chyb</em> za skladbu zahranou bez chyb, <em>⭐⭐ Virtuoz · splněná výzva</em> za splněnou výzvu (třeba stupnice v tempu 80). Klepnutím odznak zapneš nebo vypneš; uloží se s hodnocením.</li>
       </ul>
       <p>Po odeslání žák hodnocení uvidí v sekci Nahrávky a připíšou se mu XP. Když hodnocení později změníš nebo nahrávku smažeš, XP se samo přepočítá. Nevhodnou nebo nepotřebnou nahrávku lze trvale smazat.</p>
 
       <h3>Hvězdy za vystoupení</h3>
-      <p>V sekci <strong>Žáci</strong> má každý žák řádek <em>Hvězdy za vystoupení</em> s tlačítky <strong>+</strong> a <strong>−</strong>. Hvězdy dávej za koncerty, vystoupení nebo splněné výzvy – nic jiného je nepřidává. Na level nemají vliv (ten určují XP), odemykají odznaky Malý virtuoz a Virtuoz. Hvězdy můžeš dávat jen žákům ze svých tříd.</p>
+      <p>V sekci <strong>Žáci</strong> má každý žák řádek <em>Hvězdy za vystoupení</em> s tlačítky <strong>+</strong> a <strong>−</strong>. Hvězdy dávej za koncerty, vystoupení nebo splněné výzvy – nic jiného je nepřidává. Na level ani na odznaky nemají vliv (level určují XP, odznaky Malý virtuoz a Virtuoz dáváš při hodnocení). Hvězdy můžeš dávat jen žákům ze svých tříd.</p>
 
       <div class="callout callout-info">
         <span class="callout-ico">🔐</span>
@@ -447,6 +448,7 @@
           <tbody>
             <tr><td><code>profiles</code></td><td>Uživatel: jméno, role (<code>student</code> / <code>teacher</code>), hvězdy (od učitele), XP (počítá trigger), streak, zmrazení, <code>is_approved</code>, <code>is_verified</code>, <code>is_moderator</code>, <code>is_banned</code>, GDPR souhlas, sdílení pokroku.</td></tr>
             <tr><td><code>practice_logs</code></td><td>Odeslaná cvičení: odkaz na audio, délka v sekundách, úkol, hodnocení (1–5), „co se povedlo", „co zlepšit", kdo hodnotil.</td></tr>
+            <tr><td><code>awarded_badges</code></td><td>Odznaky od učitele (<code>maly-virtuoz</code>, <code>virtuoz</code>) – ke které nahrávce, kterému žákovi a kdo je dal. Smazáním nahrávky zmizí i její odznaky (migrace 0025).</td></tr>
             <tr><td><code>streak_events</code></td><td>Den po dni: <code>completed</code> nebo <code>freeze_used</code>.</td></tr>
             <tr><td><code>classrooms</code></td><td>Třídy učitele s unikátním <code>join_code</code>.</td></tr>
             <tr><td><code>classroom_members</code></td><td>Žáci v třídách.</td></tr>
