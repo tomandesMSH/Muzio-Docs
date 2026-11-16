@@ -552,3 +552,18 @@ footer {
   .hero { padding: 28px 22px; }
   h2 { font-size: 1.35rem; }
 }
+
+/* Keyboard keys in the grading shortcuts. */
+kbd {
+  display: inline-block;
+  min-width: 1.6em;
+  padding: 0.05em 0.45em;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  background: var(--bg-card-alt);
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+  text-align: center;
+  white-space: nowrap;
+}
