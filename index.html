@@ -278,7 +278,8 @@
             <tr><td>📋 <strong>Lekce</strong></td><td>Úkoly od učitele seřazené podle termínu (<em>Odevzdat zítra</em>, <em>Do pátku</em>, <em>Po termínu</em>), historie splněných a <strong>Moje skladby</strong> – co hraješ navíc.</td></tr>
             <tr><td>🎧 <strong>Nahrávky</strong></td><td>Tvoje odeslané nahrávky se stavem <em>Ohodnoceno</em> / <em>Čeká na hodnocení</em> a zpětnou vazbou učitele (✅ co se povedlo, 🎯 co zlepšit, 1–5 🎵, případně obrázky 🖼️ – klepnutím je otevřeš ve velkém), kolik XP ti nahrávka dala a odznak 🏅, pokud ti ho učitel dal. Nová hodnocení mají štítek <em>Nové</em> a jejich počet svítí u Nahrávek v menu. Učitel ti může nahrát i <strong>🎙 hlasový komentář</strong>.</td></tr>
             <tr><td>👤 <strong>Profil</strong></td><td>Ohýnky, XP, hvězdy a počet nahrávek, <strong>kalendář cvičení</strong> (dny za poslední měsíce, nejdelší série, minuty v měsíci), maskot a odznaky s popisem.</td></tr>
-            <tr><td>⚙️ <strong>Nastavení</strong></td><td>Vzhled (Světlý / Tmavý / Podle systému), notifikace, instalace na plochu, moje třídy, změna hesla, soukromí, dokumentace, nahlášení problému a odhlášení.</td></tr>
+            <tr><td>🏫 <strong>Třídy</strong></td><td>Připojení ke třídě kódem od učitele, seznam tvých tříd s učitelem a kolik úkolů máš hotových, opuštění třídy.</td></tr>
+            <tr><td>⚙️ <strong>Nastavení</strong></td><td>Na telefonu přes ozubené kolo v Profilu. Vzhled (Světlý / Tmavý / Podle systému), notifikace, instalace na plochu, změna hesla, soukromí, dokumentace, nahlášení problému a odhlášení.</td></tr>
           </tbody>
         </table>
       </div>
@@ -311,7 +312,7 @@
       </div>
 
       <h3>Připojení do třídy</h3>
-      <p>V Nastavení → <strong>Moje třídy</strong> zadej <em>Kód od učitele</em>. Pak uvidíš úkoly zadané celé třídě.</p>
+      <p>V sekci <strong>Třídy</strong> zadej <em>Kód od učitele</em> a klepni na <strong>Připojit</strong>. Pak uvidíš úkoly zadané celé třídě. U každé třídy vidíš učitele a kolik úkolů máš hotových; třídu můžeš i opustit (nahrávky a hodnocení ti zůstanou).</p>
 
       <h3>Nahlášení problému</h3>
       <p>U hodnocení nahrávky nebo v profilu můžeš něco nahlásit (<em>Nevhodná zpráva</em>, <em>Nevhodné chování</em>, <em>Jiné</em>). Nahlášení řeší admin.</p>
@@ -344,7 +345,7 @@
       <h3>Učebny a úkoly</h3>
       <ol class="steps">
         <li>V <strong>Učebny</strong> vytvoř třídu (např. <code>3.A</code>). Aplikace vygeneruje <strong>kód pro připojení</strong>.</li>
-        <li>Kód dej žákům – připojí se v Nastavení → Moje třídy.</li>
+        <li>Kód dej žákům – připojí se v sekci Třídy.</li>
         <li>Zadej úkol (název a popis) celé třídě, nebo jen konkrétnímu žákovi.</li>
         <li>Volitelně přilož notový zápis <code>.mid</code>, <code>.midi</code>, <code>.musicxml</code>, <code>.mxl</code> nebo <code>.xml</code> (max. 5 MB) pro Keyboard Utils.</li>
         <li>Volitelně nastav <strong>termín odevzdání</strong>. Žák uvidí odpočet a večer před termínem mu přijde připomínka, pokud ještě nic neposlal.</li>
@@ -564,7 +565,7 @@
     │   ├── classrooms/  <span class="c"># připojení do třídy, nové úkoly, přílohy</span>
     │   └── layout/      <span class="c"># AppShell, Sidebar, BottomNav</span>
     ├── screens/
-    │   ├── student/     <span class="c"># Dashboard, Lessons, Recording, Feedback, Profile, Settings</span>
+    │   ├── student/     <span class="c"># Dashboard, Lessons, Recording, Feedback, Classes, Profile, Settings</span>
     │   ├── teacher/     <span class="c"># Dashboard, Students, Classrooms, Grading, Profile, Settings</span>
     │   └── moderator/   <span class="c"># Queue (Admin dashboard), UsersSection</span>
     ├── lib/             <span class="c"># auth, game-logic, consent, data/, supabase</span>
@@ -587,7 +588,7 @@ npm run lint      <span class="c"># oxlint</span></code></pre>
           <tbody>
             <tr><td><code>/login</code></td><td>Přihlášení a registrace (žák / učitel)</td></tr>
             <tr><td><code>/panel</code></td><td>Výběr panelu pro Učitele + Admina</td></tr>
-            <tr><td><code>/student</code>, <code>/student/lessons</code>, <code>/student/recording</code>, <code>/student/feedback</code>, <code>/student/profile</code>, <code>/student/settings</code></td><td>Rozhraní žáka</td></tr>
+            <tr><td><code>/student</code>, <code>/student/lessons</code>, <code>/student/recording</code>, <code>/student/feedback</code>, <code>/student/classes</code>, <code>/student/profile</code>, <code>/student/settings</code></td><td>Rozhraní žáka</td></tr>
             <tr><td><code>/teacher</code>, <code>/teacher/students</code>, <code>/teacher/classrooms</code>, <code>/teacher/grading</code>, <code>/teacher/profile</code>, <code>/teacher/settings</code></td><td>Rozhraní učitele</td></tr>
             <tr><td><code>/moderator</code></td><td>Admin dashboard</td></tr>
           </tbody>
